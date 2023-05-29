@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Online Milk Product order,delivery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="/img/Untitled design.ico">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="/style.css" type="text/css">
+
+</head>
+
+<body id="body">
+  <script src="/external.js" type="text/javascript"></script>
+  <script src="/database.js" type="text/javascript"></script>
+  <script>
+    function openForm1() {
+      document.getElementById("popupForm1").style.display = "block";
+    }
+    function openForm() {
+      document.getElementById("popupForm").style.display = "block";
+      
+    }
+    
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+    function closeForm1() {
+      document.getElementById("popupForm1").style.display = "none";
+    }
+    $(function () {
+      $('#show').click(function () {
+        $('#body').load("signup.ejs",
+        );
+      })
+    })
+    $(function () {
+      $('#ice').click(function () {
+        $('#changedynamic').load("icecream.ejs",
+        );
+      })
+    })
+    $(function () {
+      $('#propage').click(function () {
+        $('#changedynamic').load("product.ejs",
+        );
+      })
+    })  
+    $(function () {
+      $('#ghee').click(function () {
+        $('#changedynamic').load("ghee.ejs",
+        );
+      })
+    })
+    $(function () {
+      $('#explore').click(function () {
+        $('#changedynamic').load("product.ejs",
+        );
+      })
+    })
+    $(function () {
+      $('#helplink').click(function () {
+        $('#changedynamic').load("help.ejs",
+        );
+      })
+    })
+    $(function () {
+      var active='<%- JSON.stringify(data.active) %>';
+      
+      $('#profile').click(function () {
+        if(active=="true"){
+        $('#changedynamic').load("myprofile.ejs",
+        );
+        }
+        else{
+          alert("Login in!!");
+        }
+      })
+    })
+    $(function () {
+      var active='<%- JSON.stringify(data.active) %>';
+      
+      $('#profile2').click(function () {
+        if(active=="true"){
+        $('#changedynamic').load("mycart.ejs",
+        );
+        }
+        else{
+          alert("Login in!!");
+        }
+      })
+    })
+    $(function () {
+      $('#curd').click(function () {
+        $('#changedynamic').load("curd.ejs",
+        );
+      })
+    })
+    $(function () {
+      $('#butter').click(function () {
+        $('#changedynamic').load("butter.ejs",
+        );
+      })
+    })
+    
+  </script>
+
+
+  <!--    navigation bar    -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:green;color: white;height:60px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="/img/Untitled design.ico" alt="Chicago" class="img-circle"
+            style="width:40px"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="home.ejs" style="font-weight: bolder;color:white;">HOME</a></li>
+          <li><a href="#"  style="font-weight: bolder;color:white;" id="profile">MY PROFILE</a></li>
+          <li><a href="#"  style="font-weight: bolder;color:white;" id="profile2" >MY CART</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="/search" method="POST">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search" style="width: 500PX;">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="help"><a href="#" style="font-weight: bolder;color:white;"id="helplink">HELP</a></li>
+          <li class="sign"><a href="#"  style="font-weight: bolder;color:white;"id="show"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+          <li><a href="#" id="login" style="font-weight: bolder;color:white;" onclick="openForm()"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+          
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+  <div id="changedynamic">
+    <!--        slide              -->
+    <div class="container-fluid">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="/img/ice.jpg" alt="Los Angeles" style="width:100%;height:500px;" id="darken">
+            <div class="cen">
+              <h1 id="texton"></h1><br>
+              <h1 id="texton">Savor The Ice Cream Flavor</h1>
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="/img/cow.jpg" alt="Chicago" style="width:100%;height:500px;" id="darken">
+            <div class="cen">
+              <h1 id="texton"></h1><br>
+              <h1 id="texton">The Natural Choice<br> For<br> Nourishment</h1>
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="/img/milkcan.jpg" alt="New york" style="width:100%;height:500px;" id="darken">
+            <div class="cen">
+              <h1 id="texton"></h1><br>
+              <h1 id="texton">Organic Dairy Products</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <br>
+    
+    <div class="container-fluid">
+      <div class="row" id="main" style="height:300px;">
+        <div class="column"id="submain">
+          <div class="col-sm-4">
+            <img src="img/milkshakes.jpg" alt="New York" class="img-circle"style="width:95%;height:250px;"id="propage">
+           
+          </div>
+        </div>
+        <div class="column"id="submain">
+          <div class="col-sm-4"><img src="/img/naturecurd.jpg" alt="New York" class="img-circle" style="width:85%;height:250px;"id="curd">
+          </div>
+        </div>
+        <div class="column"id="submain">
+          <div class="col-sm-4"><img src="img/cowghee.jpg"alt="New York" class="img-circle"style="width:95%;height:250px;"id="ghee">
+          </div>
+        </div>
+      </div>
+      <br>
+
+
+      <div class="row" id="main"  style="height:300px;">
+        <div class="column" id="submain">
+          <div class="col-sm-4"><img src="/img/coneice3.jpg" alt="New York" class="img-circle"
+              style="width:95%;height:250px;touch-action:double-tap-zoom;"id="ice" >
+          
+          </div>
+        </div>
+        <div class="column" id="submain">
+          <div class="col-sm-4"><img src="/img/butter.jpg" alt="New York" class="img-circle"
+              style="width:95%;height:250px;"id="butter">
+            
+          </div>
+        </div>
+        <div class="column" id="submain">
+          <div class="col-sm-4"><img src="/img/cheese.jpg" alt="New York" class="img-circle"
+              style="width:95%;height:250px;"id="cheese">
+            
+           
+          </div>
+        </div>
+      </div>
+      <br>
+
+    </div>
+  </div>
+  <div class="loginPopup">
+    <div class="formPopup" id="popupForm">
+      <form action="/a" method="POST" class="formContainer">
+        <h2>Log in as user</h2>
+        <label for="username">
+          <strong>username</strong>
+        </label>
+        <input type="text" id="email" placeholder="username" name="username" required>
+        <label for="psw">
+          <strong>Password</strong>
+        </label>
+        <input type="password" id="psw" placeholder="Your Password" name="password" required>
+        <button id="display" type="submit" onclick="get()"class="btn">Log in</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+      <script>
+      var test='<%- JSON.stringify(data.msg) %>';
+      var active='<%- JSON.stringify(sdata.flag) %>';
+      var message='<%- JSON.stringify(sdata.msg1) %>';
+      var value='<%- JSON.stringify(data.value) %>'
+      var name='<%- JSON.stringify(data.name) %>'
+      if(value==1){
+      alert(test); 
+      }
+      if(active==1){
+        alert(message); 
+        active=0;
+      }
+    </script>
+    </div>
+  </div>
+  <div class="loginPopup">
+    <div class="formPopup" id="popupForm1">
+      <form action="/ad" method="POST" class="formContainer">
+        <h2>Log in as admin</h2>
+        <label for="username">
+          <strong>username</strong>
+        </label>
+        <input type="text" id="email" placeholder="username" name="username" required>
+        <label for="psw">
+          <strong>Password</strong>
+        </label>
+        <input type="password" id="psw" placeholder="Your Password" name="password" required>
+        <button id="display" type="submit" onclick="get1()"class="btn">Log in</button>
+        
+        <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+      </form>
+    </div>
+  </div>
+
+
+  
+</body>
+
+</html>

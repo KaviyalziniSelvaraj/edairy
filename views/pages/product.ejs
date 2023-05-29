@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet"  href="/style.css" type="text/css">
+</head>
+<body>
+  <script>
+  function amount(id1,id2,p){
+    let value=$('#'+id1).val();
+    let res= value*p;
+    $('#'+id2).text("Net amount =Rs:"+res+"/-");
+  }
+  $(document).ready(function(){
+    $("#like1").click(function(){
+      $(".glyphicon glyphicon-heart").css({
+    color:red,
+   });
+    });
+  });
+  function check(imgid,quanid,amnt){
+      var active='<%- JSON.stringify(data.active) %>';
+      if(active!='true'){
+        alert("Login to Buy!");
+      }
+      else{
+        console.log(imgid);
+        $.ajax({
+           type:'POST',
+           data:{
+           image:$('#'+imgid).text(),
+           quantity:$('#'+quanid).val(),
+           amount:amnt,
+           flag:1,
+           },
+           url:'/profile',
+           success:function(data){
+            $('#changedynamic').load("mycart.ejs",
+
+        );
+           },
+           error:function(error){
+            console.log("some error in fetching the notifications");
+           }
+        });
+      }
+  }
+</script>
+  <br><br>
+    <div class="container-fluid">
+        <div class="row" id="main">
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+                <img src="/img/chocolatemilk.jpg" alt="New York" class="img-circle" id="img1"
+              style="width:200px;height:200px;">
+              
+              <div class="text-center">
+                <p style="font-size: x-large;"id="pro">Chocolatemilk</p>
+              <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Chocolate flavour</p>
+                <h4 style="font-size: x-large;" id="amnt0">Rs:150/-</h4>
+                <h3 id="netamnt0">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber0" min="1"style="width:100px" onchange="amount(id,'netamnt0',150)"></h3>
+                <br>
+                <div class="bottom"><button type="submit" class="btn btn-info btn-lg" onclick="check('pro','myNumber0',150)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="/img/oreo milkshake.jpg" alt="New York" class="img-circle"
+              style="width:200px;height:200px;">
+              <div class="text-center">
+                <p style="font-size: x-large;" id="pro1">Oreo Milkshake</p>
+              <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Chocolate flavour</p>
+                <h4 style="font-size: x-large;"id="amnt1">Rs:50/-</h4>
+                <h3 id="netamnt1">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber1"  min="1" style="width:100px" onchange="amount(id,'netamnt1',50)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro1','myNumber1',50)">ADD TO CART</button></form></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="img/milkvariety.jpg" alt="New York" class="img-circle"
+                style="width:200px;height:200px;">
+                <div class="text-center">
+                  <p style="font-size: x-large;" id="pro2">Milkvariety</p>
+                <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Feel the Taste!</p>
+                <h4 style="font-size: x-large;"id="amnt2">Rs:80/-</h4>
+                <h3 id="netamnt2">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber2"  min="1" style="width:100px" onchange="amount(id,'netamnt2',80)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro2','myNumber2',80)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="img/milkshakes.jpg" alt="New York" class="img-circle"
+                style="width:100%;height:100%;">
+                <div class="text-center">
+                  <p style="font-size: x-large;"id='pro3'>MilkShakes</p>
+                <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Strawberry & chocolate </p>
+                <h4 style="font-size: x-large;" id="amnt3">Rs:120/-</h4>
+               <h3 id="netamnt3">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber3"  min="1"  style="width:100px" onchange="amount(id,'netamnt3',120)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro3','myNumber3',120)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+        
+          
+        
+
+
+
+
+       
+</body>
+</html>

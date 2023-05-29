@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet"  href="/style.css" type="text/css">
+</head>
+<body>
+  <script>
+    function amount(id1,id2,p){
+      let value=$('#'+id1).val();
+      let res= value*p;
+      $('#'+id2).text("Net amount =Rs:"+res+"/-");
+    }
+    function check(imgid,quanid,amnt){
+      var active='<%- JSON.stringify(data.active) %>';
+      if(active!='true'){
+        alert("Login to Buy!");
+      }
+      else{
+        console.log(imgid);
+        $.ajax({
+           type:'POST',
+           data:{
+           image:$('#'+imgid).text(),
+           quantity:$('#'+quanid).val(),
+           amount:amnt,
+           flag:1,
+           },
+           url:'/profile',
+           success:function(data){
+            $('#changedynamic').load("mycart.ejs",
+
+        );
+           },
+           error:function(error){
+            console.log("some error in fetching the notifications");
+           }
+        });
+      }
+  }
+  </script>
+  <br><br>
+    <div class="container-fluid">
+        <div class="row" id="main">
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="/img/nutritive curd.jpg" alt="New York" class="img-circle"
+              style="width:200px;height:200px;">
+              <div class="text-center">
+                <p style="font-size: x-large;"id="pro">Nutritive Curd</p>
+              <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Curd Delight</p>
+                <h4 style="font-size: x-large;">Rs:55/-</h4>
+                <h3 id="netamnt0">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber0"min="1" style="width:100px" onchange="amount(id,'netamnt0',55)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro','myNumber0',55)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="/img/homie curd.jpg" alt="New York" class="img-circle"
+              style="width:200px;height:200px;">
+              <div class="text-center">
+                <p style="font-size: x-large;"id="pro1">Homie Curd</p>
+              <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Pure & Healthy</p>
+                <h4 style="font-size: x-large;">Rs:80/-</h4>
+                <h3 id="netamnt1">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber1"min="1" style="width:100px" onchange="amount(id,'netamnt1',80)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro1','myNumber1',80)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src="/img/naturecurd.jpg" alt="New York" class="img-circle"
+                style="width:200px;height:200px;">
+                <div class="text-center">
+                  <p style="font-size: x-large;"id="pro2">natureCurd</p>
+                <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Extra Creamier</p>
+                <h4 style="font-size: x-large;">Rs:60/-</h4>
+                <h3 id="netamnt2">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber2"min="1" style="width:100px" onchange="amount(id,'netamnt2',60)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg" onclick="check('pro2','myNumber2',60)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="col-md-3">
+              <div class="image"  style="background-color:darkgray">
+              <img src= "/img/organic yogurt.jpg"alt="New York" class="img-circle"
+              style="width:200px;height:200px;">
+              <div class="text-center">
+                <p style="font-size: x-large;"id="pro3">Organic Yogurt</p>
+              <hr>
+                <div class="text-center">
+                <p style="font-size: medium;font-family: 'Times New Roman', Times, serif;">Tastier & Creamier</p>
+                <h4 style="font-size: x-large;">Rs:100/-</h4>
+                <h3 id="netamnt3">Net amount = Rs:/-</h3>
+                <h3>Quantity <input type="number" id="myNumber3"min="1" style="width:100px" onchange="amount(id,'netamnt3',100)"></h3>
+                <br>
+                <div class="bottom"><button type="button" class="btn btn-info btn-lg"onclick="check('pro3','myNumber3',100)">ADD TO CART</button></div>
+                <br>
+              </div>
+            </div>
+            </div>
+          </div>
+        
+          
+        
+
+
+
+
+       
+</body>
+</html>
